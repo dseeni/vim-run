@@ -33,7 +33,11 @@ endfunction
 " endfunction
 
 function! run#defaults#javascript() abort
-    return ['node']
+    return ['node --preserve-symlinks-main --preserve-symlinks']
+endfunction
+
+function! run#defaults#javascriptreact() abort
+    return ['node --preserve-symlinks-main --preserve-symlinks']
 endfunction
 
 function! run#defaults#python() abort
@@ -99,14 +103,18 @@ function! run#defaults#coffee() abort
     return ['coffee']
 endfunction
 
+" function! run#defaults#typescript() abort
+"     return [
+"                 \ 'tsc',
+"                 \ run#defaults#fullfilepath(),
+"                 \ '&&',
+"                 \ 'node --preserve-symlinks-main --preserve-symlinks',
+"                 \ run#defaults#basefilename() . '.js',
+"                 \ ]
+" endfunction
+
 function! run#defaults#typescript() abort
-    return [
-                \ 'tsc',
-                \ run#defaults#fullfilepath(),
-                \ '&&',
-                \ 'node',
-                \ run#defaults#basefilename() . '.js'
-                \ ]
+    return ['tsc']
 endfunction
 
 function! run#defaults#elixir() abort
